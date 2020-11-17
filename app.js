@@ -13,6 +13,7 @@ const server = http.createServer(app);
 // 생성된 서버를 socket.io에 바인딩
 const io = socket(server);
 
+// 외부 클라이언트들이 각각의 경로를 요청할때 엑세스가 가능하게 해주는 작업
 app.use('/css', express.static("./static/css"));
 app.use('/js', express.static("./static/js"));
 app.use('/img', express.static("./static/img"));
@@ -32,6 +33,7 @@ app.get('/', function(request, response) {
   });
 });
 
+// 클라이언트가 소캣으로 접속하면 실행되는 함수 정의
 io.socket.on('connection', function(socket) {
   console.log('유저 접속 됨');
 

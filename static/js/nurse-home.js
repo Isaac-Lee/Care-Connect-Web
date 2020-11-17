@@ -18,6 +18,8 @@ var veiwStatusCell = document.getElementById("veiw-status-cell");
 // 환자 증상 조회 창으로 이동하는 함수
 function viewStatus() {}
 
-// 채팅 관련 함수 >> 이후 수정 예정
+// 채팅 관련 함수
+// 텍스트를 서버로 전송
 function sendChat() {}
+// 이미지를 서버로 전송
 function sendImg() {}
