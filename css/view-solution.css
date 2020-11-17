@@ -1,0 +1,25 @@
+#grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+#side-bar {
+  border: 1px solid salmon;
+  margin: 10px;
+}
+
+#status-cell {
+  border: 1px solid salmon;
+  margin: 10px;
+  padding: 10px;
+}
+
+#veiw-solution-box {
+  border: 1px solid salmon;
+  margin: 10px;
+  padding: 10px;
+}
+
+body {
+  margin: 10px;
+}

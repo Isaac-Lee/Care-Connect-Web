@@ -1,0 +1,29 @@
+#grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+#side-bar {
+  border: 1px solid salmon;
+  margin: 10px;
+}
+
+#sign-in-text-cell {
+  border: 1px solid salmon;
+  margin: 10px;
+  padding: 10px;
+}
+
+#enter-info-box {
+  border: 1px solid salmon;
+  margin: 10px;
+  padding: 10px;
+}
+
+#chat-input {
+  text-align: center;
+}
+
+body {
+  margin: 10px;
+}
