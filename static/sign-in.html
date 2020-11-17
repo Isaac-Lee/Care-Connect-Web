@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Care Connect - Home</title>
+  <link rel="stylesheet" href="../css/sign-in.css">
+</head>
+<body>
+  <img src="../img/careconnect-logo-text.png" height="50"></br>
+  <div id="grid">
+    <div id="side-bar">
+      <div id="sign-in-text-cell">
+        회원가입
+      </div>
+    </div>
+    <div id="enter-info-box">
+      <form>
+        이름<br>
+        <input type="text" id="name" name="name"><br>
+        아이디<br>
+        <input type="text" id="userid" name="userid"><br>
+        비밀번호<br>
+        <input type="password" id="pass" name="pass"><br>
+        나이<br>
+        <input type="number" id="age" name="age" min="0" max="120"><br>
+        당뇨 종류<br>
+        <select name="diabetes-type" id="diabetes-type">
+          <option value="first">1형 당뇨</option>
+          <option value="second">2형 당뇨</option>
+         </select><br>
+        당뇨 이력<br>
+        <select name="how-log" id="how-log">
+          <option value="0">1년 미만</option>
+          <option value="1">1년 이상</option>
+          <option value="5">5년 이상</option>
+          <option value="10">10년 이상</option>
+          <option value="20">20년 이상</option>
+         </select><br>
+        <input type="reset" value="취소"><input type="button" value="저장" id="submit-btn">
+      </form>
+    </div>
+  </div>
+</body>
+<script src="../js/sign-in.js"></script>
+</html>

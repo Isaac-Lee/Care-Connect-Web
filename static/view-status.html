@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Care Connect - Home</title>
+  <link rel="stylesheet" href="../css/view-status.css">
+</head>
+<body>
+  <img src="../img/careconnect-logo-text.png" height="50"></br>
+  <div id="grid">
+    <div id="side-bar">
+      <div id="status-cell">
+        담당환자<br>
+        이름 : <a id="patient-name"></a>홍길동<br><br>
+        환자 당뇨<br>
+        상태 : <a id="status">좋음</a>
+      </div>
+      <br>
+      <div id="view-status-cell">
+        환자 증상 조회
+      </div>
+    </div>
+    <div id="view-status-box">
+      <ol>
+        <li>
+          당뇨형<br>
+          <a id="what-type">1형</a>
+        </li>
+        <li>
+          당뇨기간<br>
+          <a id="how-long">5년</a>
+        </li>
+        <li>
+          식단 조절 내용<br>
+          <textarea id="diet"></textarea>
+        </li>
+        <li>
+          운동 내용<br>
+          <textarea id="workout"></textarea>
+       </li>
+      </ol>
+      <input type="button" value="돌아가기" id="return-btn">
+    </div>
+  </div>
+</body>
+<script src="../js/view-status.js"></script>
+</html>
