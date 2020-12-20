@@ -17,7 +17,10 @@
   },
   "homepage": "https://github.com/Isaac-Lee/Care-Connect-Web#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.5",
     "express": "^4.17.1",
+    "express-mysql-session": "^2.1.5",
     "soket.io": "0.0.1-security"
   }
 }
