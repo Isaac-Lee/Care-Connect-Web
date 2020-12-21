@@ -36,6 +36,10 @@
   float: right;
 }
 
+#logout-btn {
+  float: right;
+}
+
 body {
   margin: 10px;
 }

@@ -6,6 +6,11 @@ statusCell.addEventListener('click', viewNurse);
 enterStatusCell.addEventListener('click', viewStatus);
 viewSolutionCell.addEventListener('click', viewSolution);
 
+var logout = document.getElementById("logout-btn");
+logout.addEventListener('click', function() {
+  window.location.href = '/auth/logout';
+})
+
 // 문자 전송 버튼
 var sendBtn = document.getElementById("send-btn");
 sendBtn.addEventListener('click', sendChat);

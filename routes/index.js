@@ -23,4 +23,10 @@ router.get('/', function(req, res) {
   }
 });
 
+router.get('/signin', function(req, res) {
+  fs.readFile('./static/sign-in.html', 'utf8', function(error, html){
+    res.send(html);
+  });
+});
+
 module.exports = router;

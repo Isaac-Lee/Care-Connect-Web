@@ -6,6 +6,11 @@ statusCell.addEventListener('click', returnToHome);
 enterStatusCell.addEventListener('click', viewStatus);
 viewSolutionCell.addEventListener('click', viewSolution);
 
+var logout = document.getElementById("logout-btn");
+logout.addEventListener('click', function() {
+  window.location.href = '/auth/logout';
+})
+
 var returnBtn = document.getElementById("return-btn");
 returnBtn.addEventListener('click', returnToHome);
 

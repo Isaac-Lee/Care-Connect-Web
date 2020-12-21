@@ -6,6 +6,11 @@ statusCell.addEventListener('click', viewNurse);
 enterStatusCell.addEventListener('click', returnToHome);
 viewSolutionCell.addEventListener('click', viewSolution);
 
+var logout = document.getElementById("logout-btn");
+logout.addEventListener('click', function() {
+  window.location.href = '/auth/logout';
+})
+
 // 간호사 정보 보는 창으로 이동하는 함수
 function viewNurse() {
   window.location.href = '/patient/nurse';
