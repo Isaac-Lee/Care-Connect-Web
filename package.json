@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/Isaac-Lee/Care-Connect-Web/issues"
   },
-  "homepage": "https://github.com/Isaac-Lee/Care-Connect-Web#readme"
+  "homepage": "https://github.com/Isaac-Lee/Care-Connect-Web#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express-session": "^1.17.1",
+    "session": "^0.1.0",
+    "session-file-store": "^1.5.0",
+    "socket.io": "^3.0.4"
+  }
 }

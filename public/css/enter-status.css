@@ -1,0 +1,51 @@
+#grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+#side-bar {
+  border: 1px solid salmon;
+  margin: 10px;
+}
+
+#status-cell {
+  border: 1px solid salmon;
+  margin: 10px;
+  padding: 10px;
+}
+
+#enter-status-box {
+  border: 1px solid salmon;
+  margin: 10px;
+  padding: 10px;
+}
+
+#enter-status-cell {
+  border: 1px solid salmon;
+  margin: 10px;
+  padding: 10px;
+}
+
+#view-solution-cell {
+  border: 1px solid salmon;
+  margin: 10px;
+  padding: 10px;
+}
+
+#message {
+  background-color:#F5F5F5;
+  height:1000px;
+  OVERFLOW-Y:auto;
+  word-wrap: break-word;
+}
+
+#chat-input {
+  text-align: center;
+}
+
+#reset-btn, #submit-btn {
+  float: right;
+}
+body {
+  margin: 10px;
+}

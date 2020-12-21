@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Care Connect</title>
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../public/css/index.css" type="text/css">
 </head>
 <body>
   <div id="grid">
-    <form id="login">
-      <img src="../img/careconnect-logo-text.png" height="50"></br>
+    <form id="login" action="/auth/login_process" method="post">
+      <img src="../public/img/logo.png" height="50"></br>
       아이디 <input type="text" id="userid" name="userid"><br>
       비밀번호 <input type="password" id="userpw" name="userpw"><br>
-      <input type="button" value="환자 로그인" id="patient-login-btn">
-      <input type="button" value="간호사 로그인" id="nurse-login-btn">
+      <input type="submit" value="환자 로그인" name="type">
+      <input type="submit" value="간호사 로그인" name="type">
       <input type="button" value="회원가입" id="sign-in-btn">
     </form>
   </div>
 </body>
-<script src="../js/login.js"></script>
 </html>
