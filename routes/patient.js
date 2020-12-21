@@ -65,6 +65,8 @@ router.get('/status', function(req, res) {
   } else {
     var charge = req.session.charge;
     var status = req.session.status;
+    var diet = req.session.diet;
+    var workout = req.session.workout;
     var html = patientTemplate.HTML(charge, status,
       `
       <div id="enter-status-box">
@@ -72,14 +74,14 @@ router.get('/status', function(req, res) {
           <ol>
             <li>
               당뇨형<br>
-              <select name="diabetes-type">
+              <select name="type">
                <option value="first">1형 당뇨</option>
                <option value="second">2형 당뇨</option>
               </select>
             </li>
             <li>
               당뇨기간<br>
-              <select name="how-log">
+              <select name="long">
                <option value="0">1년 미만</option>
                <option value="1">1년 이상</option>
                <option value="5">5년 이상</option>
@@ -89,11 +91,11 @@ router.get('/status', function(req, res) {
             </li>
             <li>
               식단 조절 내용<br>
-              <textarea id="diet"></textarea>
+              <textarea name="diet">${diet}</textarea>
             </li>
             <li>
               운동 내용<br>
-              <textarea id="workout"></textarea>
+              <textarea name="workout">${workout}</textarea>
            </li>
           </ol>
           <input type="submit" value="저장" id="submit-btn"><input type="reset" value="취소" id="reset-btn">
@@ -134,13 +136,52 @@ router.get('/solution', function(req, res) {
   }
 });
 
-router.get('/save_status_process', function(req, res) {
+router.post('/save_status_process', function(req, res) {
   var isOwner = auth.isOwner(req, res);
   if (!isOwner) {
     res.redirect(`/`);
   } else {
-    res.send("save data!")
-    //res.redirect(`/`);
+    var post = req.body;
+    var type = post.type;
+    var long = post.long;
+    var diet = post.diet;
+    var workout = post.workout;
+    
+    req.session.type = type;
+    req.session.long = long;
+    req.session.diet = diet;
+    req.session.workout = workout;
+
+    var id = req.session.userid;
+    var pw = req.session.pw;
+    var name = req.session.nickname;
+    var charge = req.session.charge;
+    var status = req.session.status;
+    var age = req.session.age;
+    var type = req.session.type;
+    var long = req.session.long;
+    var diet = req.session.diet;
+    var workout = req.session.workout;
+    var solution = req.session.solution;
+
+    var user = {
+      "id": id,
+      "password": pw,
+      "name": name,
+      "age": age,
+      "type": type,
+      "long": long,
+      "status": status,
+      "charge": charge,
+      "diet": diet,
+      "workout": workout,
+      "solution": solution
+    }
+    var content = JSON.stringify(user);
+    fs.writeFile(`data/user/${id}`, content, 'utf8', function(err){
+      res.send('<script type="text/javascript">alert("정보가 변경 되었습니다. 되었습니다."); window.location="/patient/home"; </script>');
+    });
+    res.redirect(`/patient/home`);
   }
 });
 

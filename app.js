@@ -22,14 +22,14 @@ var authRouter = require('./routes/auth');
 var patientRouter = require('./routes/patient');
 var nurseRouter = require('./routes/nurse');
 
-// DB연결
-var mongoose = require('mongoose');
-var db = mongoose.connection;
-db.on('error', console.error);
-db.once('open', function(){
-    console.log("Connected to mongod server");
-});
-mongoose.connect('mongodb://localhost/mongodb_tutorial');
+// // DB연결
+// var mongoose = require('mongoose');
+// var db = mongoose.connection;
+// db.on('error', console.error);
+// db.once('open', function(){
+//     console.log("Connected to mongod server");
+// });
+// mongoose.connect('mongodb://localhost/mongodb_tutorial');
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);

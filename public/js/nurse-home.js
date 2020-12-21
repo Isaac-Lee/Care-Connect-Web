@@ -10,6 +10,11 @@ logout.addEventListener('click', function() {
   window.location.href = '/auth/logout';
 })
 
+var logoImg = document.getElementById("logo");
+logoImg.addEventListener('click', function() {
+  window.location.href = '/nurse/home';
+})
+
 // 환자 증상 조회 창으로 이동하는 함수
 function viewStatus() {
   window.location.href = '/nurse/status';

@@ -15,7 +15,7 @@ var authData = {
 router.get('/', function(req, res) {
   var isOwner = auth.isOwner(req, res);
   if (isOwner) {
-    res.redirect(`/${req.session.user_type}`);
+    res.redirect(`/${req.session.user_type}/home`);
   } else {
     fs.readFile('./static/index.html', 'utf8', function(error, html){
       res.send(html);

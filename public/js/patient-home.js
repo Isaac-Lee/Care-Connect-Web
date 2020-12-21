@@ -15,6 +15,11 @@ logout.addEventListener('click', function() {
 var sendBtn = document.getElementById("send-btn");
 sendBtn.addEventListener('click', sendChat);
 
+var logoImg = document.getElementById("logo");
+logoImg.addEventListener('click', function() {
+  window.location.href = '/patient/home';
+})
+
 // 채팅 관련 함수
 // 텍스트를 서버로 전송
 function sendChat() {}

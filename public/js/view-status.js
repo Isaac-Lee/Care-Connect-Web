@@ -10,6 +10,11 @@ logout.addEventListener('click', function() {
   window.location.href = '/auth/logout';
 })
 
+var logoImg = document.getElementById("logo");
+logoImg.addEventListener('click', function() {
+  window.location.href = '/nurse/home';
+})
+
 var returnBtn = document.getElementById("return-btn");
 returnBtn.addEventListener('click', returnToHome);
 
