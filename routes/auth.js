@@ -70,6 +70,8 @@ router.post('/login_process', function(req, res){
           // 환자의 정보를 세션에 저장
           req.session.is_logined = true;
           req.session.user_type = type;
+          req.session.type = user.type;
+          req.session.long = user.long;
           req.session.charge = user.name;
           req.session.status = user.status;
           req.session.diet = user.diet;
@@ -97,8 +99,8 @@ router.post('/login_process', function(req, res){
 // 로그아웃을 당당하는 부분
 router.get('/logout', function(request, response){
   request.session.destroy(function(err) {  // 세션을 삭제하고...
+    response.redirect(`/`);
   });
-  response.redirect('/');                  // '/' 으로 이동한다.
 });
 
 // 회원가입을 담당하는 부분
