@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 const { report } = require('.');
+const patient = require('../lib/patient');
 
 // const User = require("../models/user");
 // const mongoose = require("mongoose");
@@ -17,6 +18,7 @@ router.post('/login_process', function(req, res){
   var pw = post.userpw;
   var type = post.type;
   if (type == "환자 로그인") {
+    type = 'patient';
     var isExist = false;
     fs.readdir('./data', function(error, filelist){
       isExist = filelist.includes(id);
@@ -54,11 +56,13 @@ router.post('/login_process', function(req, res){
       }
     });
   } else {
+    type = 'nurse';
     if (id == "admin" && pw == "admin") {
       fs.readdir('./data', function(error, filelist){
         fs.readFile(`data/${filelist[0]}`, 'utf8', function(err, user) {
           user = JSON.parse(user);
           req.session.is_logined = true;
+          req.session.user_type = type;
           req.session.charge = user.name;
           req.session.status = user.status;
           req.session.diet = user.diet;

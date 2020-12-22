@@ -12,12 +12,16 @@ router.get('/home', function(req, res) {
   if (!isOwner) {
     res.redirect(`/`);
   } else {
+    var name = req.session.nickname;
     var charge = req.session.charge;
     var status = req.session.status;
     var html = patientTemplate.HTML(charge, status,
       `
       <div id="chetting-box">
-        <div id="message"></div>
+        <div id="message">
+          <input type="hidden" value="${name}" id="username">
+          <p id="info"></p>
+        </div>
         <div id="chat-input">
           <input type="button" value="사진" id="txtImg">
           <input type='text' id='txtChat' name="txtChat" size="80" placeholder="메시지를 입력하세요">

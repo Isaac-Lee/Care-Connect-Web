@@ -1,10 +1,13 @@
 const express = require('express');
-var path = require('path');
-var session = require('express-session');
-var FileStore = require('session-file-store')(session);
+const path = require('path');
+const http = require('http');
+const session = require('express-session');
+const FileStore = require('session-file-store')(session);
 const bodyParser = require('body-parser');
 
 const app = express();
+const server = http.createServer(app);
+const io = require('socket.io')(server);
 const port = 3000;
 
 app.io = require('socket.io')();
@@ -22,15 +25,6 @@ var authRouter = require('./routes/auth');
 var patientRouter = require('./routes/patient');
 var nurseRouter = require('./routes/nurse');
 
-// // DB연결
-// var mongoose = require('mongoose');
-// var db = mongoose.connection;
-// db.on('error', console.error);
-// db.once('open', function(){
-//     console.log("Connected to mongod server");
-// });
-// mongoose.connect('mongodb://localhost/mongodb_tutorial');
-
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/patient', patientRouter);
@@ -38,17 +32,28 @@ app.use('/nurse', nurseRouter);
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + "/public"));
 
-app.io.on("connection", (socket) => {
-  console.log('a user connected');
-  socket.on('send', (msg) => {
-    console.log(msg);
-    app.io.emit('update', msg);
+io.sockets.on('connection', function(socket){ 
+  socket.on('newUserConnect', function(name){ 
+    socket.name = name; 
+    var message = name + '님이 접속했습니다'; 
+    io.sockets.emit('updateMessage', { 
+      name : 'SERVER',
+      message : message 
+    }); 
   });
-  socket.on('disconnect', () => {
-  console.log(`user disconnected`);
+  socket.on('disconnect', function(){ 
+    var message = socket.name + '님이 퇴장했습니다'; 
+    socket.broadcast.emit('updateMessage', { 
+      name : 'SERVER', 
+      message : message 
+    }); 
+  });
+  socket.on('sendMessage', function(data){ 
+    data.name = socket.name; 
+    io.sockets.emit('updateMessage', data); 
   });
 });
 
-app.listen(port, function() {
-  console.log(`Example app listening at http://localhost:${port}`)
-});
+server.listen(3000, function() {
+  console.log('서버 실행중...');
+})
