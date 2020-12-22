@@ -1,21 +1,13 @@
+// 해당 라우터에서 사용되는 라이브러리 선언 부분
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
-const { report } = require('.');
-const patient = require('../lib/patient');
 
-// const User = require("../models/user");
-// const mongoose = require("mongoose");
-
-
- function findUser(id) {
-   
- }
-
+// 로그인을 요청할 때 처리하는 부분
 router.post('/login_process', function(req, res){
   var post = req.body;
-  var id = post.userid;
-  var pw = post.userpw;
+  var id = post.userid;        // 유저가 입력한 id
+  var pw = post.userpw;        // 유저가 입력한 password
   var type = post.type;
   if (type == "환자 로그인") {
     type = 'patient';
@@ -119,4 +111,5 @@ router.post('/singin_process', function(req, res){
   });
 });
 
+// 해당 모듈을 미들웨어로 쓰기 위해서 export
 module.exports = router;
