@@ -6,15 +6,18 @@ var veiwStatusCell = document.getElementById("view-status-cell");
 chargeCell.addEventListener('click', viewStatus);
 veiwStatusCell.addEventListener('click', viewStatus);
 
-// 로그아웃 버튼
+// 로그 아웃 버튼
 var logout = document.getElementById("logout-btn");
+// 로그아웃 버튼을 누르면 로그아웃 처리하는 부분으로 넘어감
 logout.addEventListener('click', function() {
   window.location.href = '/auth/logout';
 })
 
+// 로고 이미지
 var logoImg = document.getElementById("logo");
+// 로고 이미지르 틀릭하면 홈으로 이동함
 logoImg.addEventListener('click', function() {
-  window.location.href = '/nurse/home';
+  window.location.href = '/patient/home';
 })
 
 // 환자 증상 조회 창으로 이동하는 함수
@@ -22,6 +25,7 @@ function viewStatus() {
   window.location.href = '/nurse/status';
 }
 
+// 채팅이 표시되는 부분과 사용자가 입력하는부분
 var chatWindow = document.getElementById('message');
 var txtChat = document.getElementById('txtChat');
 
@@ -34,11 +38,13 @@ sendBtn.addEventListener('click', function(){
   txtChat.value = ''; 
 });
 
+// 만약 접속을 한다면
 socket.on('connect', function(){ 
   var name = '간호사';
-  socket.emit('newUserConnect', name);
+  socket.emit('newUserConnect', name);// 서버에 누군가 접속했다고 알림
 });
 
+// 메시지를 서버나 사용자에게서 받았을때 그 메시지를 보여주는 부분
 socket.on('updateMessage', function(data){
   if(data.name === 'SERVER'){ 
     var info = document.getElementById('info'); 
@@ -52,6 +58,7 @@ socket.on('updateMessage', function(data){
   }
 });
 
+// 메시지를 사용자의 화면에 출력해주는 부분
 function drawChatMessage(data){ 
   var wrap = document.createElement('p'); 
   var message = document.createElement('span'); 
@@ -66,15 +73,3 @@ function drawChatMessage(data){
   wrap.appendChild(message); 
   return wrap; 
 }
-
-// 채팅 관련 함수
-// 텍스트를 서버로 전송
-function sendChat() {}
-// 이미지를 서버로 전송
-function sendImg() {}
-
-// 채팅 관련 함수
-// 텍스트를 서버로 전송
-function sendChat() {}
-// 이미지를 서버로 전송
-function sendImg() {}

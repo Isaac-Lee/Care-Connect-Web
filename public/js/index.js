@@ -1,3 +1,4 @@
+// 회원 가입 버튼
 var siginBtn = document.getElementById("sign-in-btn");
 siginBtn.addEventListener('click', gotoSignIn);
 

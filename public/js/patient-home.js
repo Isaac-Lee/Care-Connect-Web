@@ -9,11 +9,21 @@ statusCell.addEventListener('click', viewNurse);
 enterStatusCell.addEventListener('click', viewStatus);
 viewSolutionCell.addEventListener('click', viewSolution);
 
+// 로그 아웃 버튼
 var logout = document.getElementById("logout-btn");
+// 로그아웃 버튼을 누르면 로그아웃 처리하는 부분으로 넘어감
 logout.addEventListener('click', function() {
   window.location.href = '/auth/logout';
 })
 
+// 로고 이미지
+var logoImg = document.getElementById("logo");
+// 로고 이미지르 틀릭하면 홈으로 이동함
+logoImg.addEventListener('click', function() {
+  window.location.href = '/patient/home';
+})
+
+// 채팅이 표시되는 부분과 사용자가 입력하는부분
 var chatWindow = document.getElementById('message');
 var txtChat = document.getElementById('txtChat');
 
@@ -22,14 +32,9 @@ var sendBtn = document.getElementById("send-btn");
 sendBtn.addEventListener('click', function(){ 
   var message = txtChat.value; 
   if(!message) return false; 
-  socket.emit('sendMessage', { message }); 
+  socket.emit('sendMessage', { message }); // 소캣에 문자 전송을을 했다는 것을 알림
   txtChat.value = ''; 
 });
-
-var logoImg = document.getElementById("logo");
-logoImg.addEventListener('click', function() {
-  window.location.href = '/patient/home';
-})
 
 // 간호사 정보 보는 창으로 이동하는 함수
 function viewNurse() {
@@ -46,14 +51,16 @@ function viewSolution() {
   window.location.href = '/patient/solution';
 }
 
-
+// 채팅에서 사용하기 위해서 저장한 유저의 이름을 불러옴
 var username = document.getElementById("username");
 
+// 만약 접속을 한다면
 socket.on('connect', function(){ 
   var name = username.value;
-  socket.emit('newUserConnect', name);
+  socket.emit('newUserConnect', name); // 서버에 누군가 접속했다고 알림
 });
 
+// 메시지를 서버나 사용자에게서 받았을때 그 메시지를 보여주는 부분
 socket.on('updateMessage', function(data){
   if(data.name === 'SERVER'){ 
     var info = document.getElementById('info'); 
@@ -66,6 +73,7 @@ socket.on('updateMessage', function(data){
   }
 });
 
+// 메시지를 사용자의 화면에 출력해주는 부분
 function drawChatMessage(data){ 
   var wrap = document.createElement('p'); 
   var message = document.createElement('span'); 
@@ -80,9 +88,3 @@ function drawChatMessage(data){
   wrap.appendChild(message); 
   return wrap; 
 }
-
-// 채팅 관련 함수
-// 텍스트를 서버로 전송
-function sendChat() {}
-// 이미지를 서버로 전송
-function sendImg() {}
