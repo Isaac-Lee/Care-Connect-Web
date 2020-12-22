@@ -23,7 +23,7 @@ router.get('/home', function(req, res) {
       <div id="chat-input">
         <input type="button" value="사진" id="txtImg">
         <input type='text' id='txtChat' name="txtChat" size="80" placeholder="메시지를 입력하세요">
-        <input type="button" value="전송" id="submite-chat">
+        <input type="button" value="전송" id="send-btn">
       </div>
     </div>
     `,
